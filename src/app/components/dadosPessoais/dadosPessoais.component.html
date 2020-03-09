@@ -3,48 +3,45 @@
 
 
     <!-- INPUTS -->
-    <form class="text-left" [formGroup]="simuladorForm">
+    <form class="text-left" [formGroup]="dataForm">
       <div class="row">
         <div class="col-sm-6">
           <div class="row">
             <div class="col-6">
               <label for="selectedCall">Nome</label>
-              <select class="form-control" formControlName="selectedCallId" (change)="callSelected()">
-                <option *ngFor="let call of callOptions, let i = index" value="{{i}}">
-                  {{call.origin.ddd}}
-                </option>
-              </select>
+              <input class="form-control" formControlName="name" (input)="updated()">
             </div>
             <div class="col-6">
               <label for="selectedDestiny">Telefone</label>
-              <select class="form-control" formControlName="selectedDestinyId" (change)="updatePrice()">
-                <option *ngFor="let destination of selectedCall.destinations, let i = index" value="{{i}}">
-                  {{destination.location.ddd}}
-                </option>
-              </select>
+              <input class="form-control" formControlName="phone" (input)="updated()">
+
             </div>
           </div>
         </div>
         <div class="col-sm-4 offset-sm-2">
           <label for="time">Como nos conheceu?</label>
-          <input type="number" class="form-control" formControlName="time" min="1" max="200" (input)="updatePrice()">
+          <select class="form-control" formControlName="knownFrom" (change)="updated()">
+            <option *ngFor="let location of locations, let i = index" value="{{i}}">
+              {{location.name}}
+            </option>
+          </select>
         </div>
       </div>
 
-      <div class="{{simuladorForm.get('time').valid ? 'invisible' : 'visible'}} text-right text-danger" style="line-height: 12px;">
+      <div class="{{dataForm.get('knownFrom').valid ? 'invisible' : 'visible'}} text-right text-danger" style="line-height: 12px;">
         <small> Por favor, insira um tempo entre 1 e 600. </small>
       </div> 
 
-      <label for="plan">Possui alguma rede social?</label>
+      <label for="socialMedia">Possui alguma rede social?</label>
       <div class="btn-group-toggle" data-toggle="buttons">
         <div class="row">
-          <label class="btn col-sm" *ngFor="let plan of plans">
-            <input type="radio" name="plan" formControlName="plan" id="{{plan.name}}" value="{{plan.time}}" (change)="planSelected($event)"> {{plan.name}}
+          <label class="btn col-sm" *ngFor="let socialMedia of socialMedias">
+            <input type="radio" name="socialMedia" formControlName="socialMedia" id="{{socialMedia.name}}" value="{{socialMedia.id}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
           </label>
         </div>
       </div>
     </form>
     
-    <img id='image' class="mt-5" src="assets/bottom-image2.png" alt="Talk">
+    <img id='image' class="mt-5" src="assets/bottom-image.png" alt="Talk">
     
 </div>
