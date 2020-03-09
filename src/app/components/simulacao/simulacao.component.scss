@@ -1,0 +1,88 @@
+.card {
+    border-radius: 10px;
+
+    // Mobile
+    @media screen and (max-width: 690px) { margin: 2%; }
+
+
+    // FORM
+    #image {
+        width: 550px; 
+        margin: auto;
+        
+        @media screen and (max-width: 800px) { width: 100%; }
+    }
+
+    #titulo {
+        font-weight: 100;
+        font-size: xx-large;
+    }
+
+    label {
+        margin-bottom: 0px;
+        font-size: x-small;
+        color: var(--SECONDARY-COLOR);
+        font-weight: 500;
+        position: relative;
+        top: 3px;
+        
+        
+        &.btn {
+            font-size: large;
+            border: black solid 0.5px;
+            color: black;
+            font-weight: 100;
+            margin: 0px 5px;
+        }
+
+        input[type=checkbox], input[type=radio] { display: none; }
+    }
+    
+    // PRICES
+
+    #prices {
+        border-radius: 5px;
+        
+        #falemais {
+            color: var(--PRIMARY-COLOR);
+            border: 2px solid var(--PRIMARY-COLOR);
+            border-radius: 5px;
+            font-size: 30px;
+            
+            .integer {
+                font-size: 65px;
+                font-weight: 500;
+                margin-left: 10px;
+            }
+            .cents { font-weight: 500; }
+        }
+    
+        #normal {
+            font-size: 25px;
+            font-weight: 100;
+            border: 1px solid var(--SECONDARY-COLOR);
+            
+            margin: 3% 0px;
+            border-left: none;
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            
+            .integer {
+                font-size: 45px;
+                font-weight: 500;
+                margin-left: 10px;
+            }
+            .cents { font-weight: 500; }
+    
+            // Mobile
+            @media screen and (max-width: 576px) {
+                margin: 0px 5%;
+                border: 1px solid var(--SECONDARY-COLOR);
+                border-top: none;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 5px;
+            }
+        }
+    }
+}
