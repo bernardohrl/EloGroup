@@ -1,5 +1,5 @@
 import { Destination } from './destination.model';
-import { Location } from './location.model';
+import { Location } from './locationOld.model';
 
 export interface Call {
     origin: Location;

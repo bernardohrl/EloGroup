@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimulacaoComponent } from './simulacao.component';
+import { DadosPessoaisComponent } from './DadosPessoais.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-describe('SimulacaoComponent', () => {
-  let component: SimulacaoComponent;
-  let fixture: ComponentFixture<SimulacaoComponent>;
+describe('DadosPessoaisComponent', () => {
+  let component: DadosPessoaisComponent;
+  let fixture: ComponentFixture<DadosPessoaisComponent>;
   let originElement: DebugElement;
   let destinyElement: DebugElement;
   let timeElement: DebugElement;
@@ -17,14 +17,14 @@ describe('SimulacaoComponent', () => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
       declarations: [ 
-        SimulacaoComponent
+        DadosPessoaisComponent
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimulacaoComponent);
+    fixture = TestBed.createComponent(DadosPessoaisComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
 
@@ -34,7 +34,7 @@ describe('SimulacaoComponent', () => {
     plansElement = fixture.debugElement.query(By.css('.btn-group-toggle'));
   });
 
-  test("it creates simulacao component", () => {
+  test("it creates dadosPessoais component", () => {
     expect(component).toBeTruthy();
   });
 

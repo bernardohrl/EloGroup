@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SimulacaoComponent } from './components/simulacao/simulacao.component';
+import { DadosPessoaisComponent } from './components/dadosPessoais/dadosPessoais.component';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -14,7 +14,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        SimulacaoComponent
+        DadosPessoaisComponent
       ],
       imports: [
         BrowserModule,

@@ -7,11 +7,11 @@ import { Plan } from 'src/models/plan.model';
 import { Mocker } from 'src/helpers/Mocker';
 
 @Component({
-  selector: 'simulacao',
-  templateUrl: './simulacao.component.html',
-  styleUrls: ['./simulacao.component.scss']
+  selector: 'dadosPessoais',
+  templateUrl: './dadosPessoais.component.html',
+  styleUrls: ['./dadosPessoais.component.scss']
 })
-export class SimulacaoComponent implements OnInit {
+export class DadosPessoaisComponent implements OnInit {
 
   public callOptions: Array<Call> = null;
   public plans: Array<Plan> = null;
