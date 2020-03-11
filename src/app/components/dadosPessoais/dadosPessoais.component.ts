@@ -11,17 +11,18 @@ import { SocialMedia } from 'src/models/socialMedia.model'
   templateUrl: './dadosPessoais.component.html',
   styleUrls: ['./dadosPessoais.component.scss']
 })
+
 export class DadosPessoaisComponent implements OnInit {
   public locations: Array<Location> = null;
   public socialMedias: Array<SocialMedia> = null;
-  public submited: boolean = false;
+  public submitted: boolean = false;
 
   public dataForm = this.fb.group({
-    name: null,
-    phone: null,
-    hasMedias: null,
-    knownFrom: [0],
-    socialMediaArray: [[], Validators.required],
+    name: [null, [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4)]],
+    phone: [null, [Validators.required, Validators.minLength(15), Validators.maxLength(15)]],
+    hasMedias: [null, Validators.required],
+    knownFrom: [[0], Validators.required],
+    socialMediaArray: [],
   });
 
 
@@ -35,11 +36,19 @@ export class DadosPessoaisComponent implements OnInit {
 
   updated() {
     console.log("\n\n")
-    console.log(this.dataForm.get('name').value)
-    console.log(this.dataForm.get('phone').value)
-    console.log(this.dataForm.get('knownFrom').value)
-    console.log(this.dataForm.get('hasMedias').value)
-    console.log(this.dataForm.get('socialMediaArray').value)
+    console.log("name", this.dataForm.get('name').value)
+    console.log("phone", this.dataForm.get('phone').value)
+    console.log("knownFrom", this.dataForm.get('knownFrom').value)
+    console.log("hasMedias", this.dataForm.get('hasMedias').value)
+    console.log("socialMediaArray", this.dataForm.get('socialMediaArray').value)
+  }
+
+  maskPhone(event) { 
+    var phone = event.target.value;
+    phone = phone.replace(/\D/g,"");
+    phone = phone.replace(/^(\d{2})(\d)/g,"($1) $2");
+    phone = phone.replace(/(\d)(\d{4})$/,"$1-$2");
+    event.target.value = phone;
   }
 
   socialMediaSelected(event) {
@@ -57,12 +66,11 @@ export class DadosPessoaisComponent implements OnInit {
 
   onSubmit() {
     console.log("aaaa")
-    this.submited = true;
+    console.log(this.dataForm.valid)
+    console.log(this.dataForm.get('name').errors)
+    
+    this.submitted = true;
   }
-
-
-
-
 
 
   private toggle(media) {

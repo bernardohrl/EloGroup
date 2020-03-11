@@ -1,63 +1,68 @@
 <div class="card text-center pt-3 px-3 px-sm-5">
-    <div id="titulo"> Nos conte um pouco mais sobre você </div>
+  <div id="titulo"> Nos conte um pouco mais sobre você </div>
 
 
-    <!-- INPUTS -->
-    <form class="text-left" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-6">
-              <label for="selectedCall">Nome</label>
-              <input class="form-control" formControlName="name" (input)="updated()">
+  <!-- INPUTS -->
+  <form class="text-left" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-6">
+            <label for="name">Nome</label>
+            <input class="form-control"  formControlName="name" (input)="updated()">
+            <div *ngIf="submitted && dataForm.get('name').errors">
+              <div class="error-message" *ngIf="submitted && dataForm.get('name').errors.required"> Campo Obrigatório. </div>
+              <div class="error-message" *ngIf="submitted && dataForm.get('name').errors.minlength"> Deve conter pelo menos 4 letras. </div>
+              <div class="error-message" *ngIf="submitted && dataForm.get('name').errors.pattern"> Utilize apenas letras. </div>
             </div>
-            <div class="col-6">
-              <label for="selectedDestiny">Telefone</label>
-              <input class="form-control" formControlName="phone" (input)="updated()">
-
+          </div>
+          <div class="col-6">
+            <label for="phone">Telefone</label>
+            <input id="phone-input" class="form-control" formControlName="phone" placeholder="(99) 99999-9999" maxlength="15"  (input)="maskPhone($event)">
+            <div *ngIf="submitted && dataForm.get('phone').errors">
+              <div class="error-message" *ngIf="submitted && dataForm.get('phone').errors.required"> Campo Obrigatório. </div>
+              <div class="error-message" *ngIf="submitted && dataForm.get('phone').errors.minlength"> Preencha como informado. </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-4 offset-sm-2">
-          <label for="time">Como nos conheceu?</label>
-          <select class="form-control" formControlName="knownFrom" (change)="updated()">
-            <option *ngFor="let location of locations, let i = index" value="{{i}}">
-              {{location.name}}
-            </option>
-          </select>
+      </div>
+      <div class="col-sm-4 offset-sm-2">
+        <label for="time">Como nos conheceu?</label>
+        <select class="form-control" formControlName="knownFrom" (change)="updated()">
+          <option *ngFor="let location of locations, let i = index" value="{{i}}">
+            {{location.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <label for="socialMedia">Possui alguma rede social?</label>
+    <div class="btn-group-toggle" data-toggle="buttons">
+      <div class="row mx-0">
+        <div class="col-md pb-3">
+          <mat-button-toggle-group #group="matButtonToggleGroup" formControlName="hasMedias" >
+            <mat-button-toggle value="true"> Sim </mat-button-toggle>
+            <mat-button-toggle value="false"> Não </mat-button-toggle>
+          </mat-button-toggle-group>
         </div>
-      </div>
 
-      <div class="{{dataForm.get('knownFrom').valid ? 'invisible' : 'visible'}} text-right text-danger" style="line-height: 12px;">
-        <small> Por favor, insira um tempo entre 1 e 600. </small>
-      </div> 
-
-      <label for="socialMedia">Possui alguma rede social?</label>
-      <div class="btn-group-toggle" data-toggle="buttons">
-        <div class="row mx-0">
-          <div class="col-md pb-3">
-            <mat-button-toggle-group #group="matButtonToggleGroup" formControlName="hasMedias" >
-              <mat-button-toggle value="true"> Sim </mat-button-toggle>
-              <mat-button-toggle value="false"> Não </mat-button-toggle>
-            </mat-button-toggle-group>
-          </div>
-
-          <div class="col-md px-1" *ngFor="let socialMedia of socialMedias">
-            <label class="btn w-100" *ngIf="group.value == 'true'">
-              <input type="checkbox" name="socialMedia"  id="{{socialMedia.name}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
-            </label>
-          </div>
-
+        <div class="col-md px-1" *ngFor="let socialMedia of socialMedias">
+          <label class="btn w-100" *ngIf="group.value == 'true'">
+            <input type="checkbox" name="socialMedia"  id="{{socialMedia.name}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
+          </label>
         </div>
+
       </div>
+    </div>
 
-      <div class="d-flex justify-content-center pt-5">
-        <button id="send" type="submit" [disabled]="submited" class="btn px-5 py-2">Enviar</button>
-      </div>
-    </form>
+    <div class="d-flex justify-content-center pt-5">
+      <!-- <button id="send" type="submit" [disabled]="submitted" class="btn px-5 py-2">Enviar</button> -->
+      <button id="send" type="submit" class="btn px-5 py-2">Enviar</button>
+    </div>
+  </form>
 
-    
+  
 
-    <img id='image' class="mt-5" src="assets/bottom-image.png" alt="Talk">
-    
+  <img id='image' class="mt-5" src="assets/bottom-image.png" alt="Talk">
+  
 </div>

@@ -38,6 +38,11 @@
         input[type=checkbox], input[type=radio] { display: none; }
     }
 
+    .error-message {
+        font-size: x-small;
+        color: red;
+    }
+
     #send {
         background-color:  var(--PRIMARY-COLOR);
         color: white;
