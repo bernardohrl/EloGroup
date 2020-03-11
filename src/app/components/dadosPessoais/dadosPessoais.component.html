@@ -7,15 +7,19 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="row">
+
+          <!-- NOME -->
           <div class="col-6">
             <label for="name">Nome</label>
-            <input class="form-control"  formControlName="name" (input)="updated()">
+            <input class="form-control"  formControlName="name">
             <div *ngIf="submitted && dataForm.get('name').errors">
               <div class="error-message" *ngIf="submitted && dataForm.get('name').errors.required"> Campo Obrigatório. </div>
               <div class="error-message" *ngIf="submitted && dataForm.get('name').errors.minlength"> Deve conter pelo menos 4 letras. </div>
               <div class="error-message" *ngIf="submitted && dataForm.get('name').errors.pattern"> Utilize apenas letras. </div>
             </div>
           </div>
+
+          <!-- TELEFONE -->
           <div class="col-6">
             <label for="phone">Telefone</label>
             <input id="phone-input" class="form-control" formControlName="phone" placeholder="(99) 99999-9999" maxlength="15"  (input)="maskPhone($event)">
@@ -26,9 +30,11 @@
           </div>
         </div>
       </div>
+
+      <!-- DE ONDE CONHECEU -->
       <div class="col-sm-4 offset-sm-2">
         <label for="time">Como nos conheceu?</label>
-        <select class="form-control" formControlName="knownFrom" (change)="updated()">
+        <select class="form-control" formControlName="knownFrom">
           <option *ngFor="let location of locations, let i = index" value="{{i}}">
             {{location.name}}
           </option>
@@ -36,32 +42,43 @@
       </div>
     </div>
 
+    <!-- REDES SOCIAIS -->
     <label for="socialMedia">Possui alguma rede social?</label>
     <div class="btn-group-toggle" data-toggle="buttons">
       <div class="row mx-0">
         <div class="col-md pb-3">
+
+          <!-- TOGGLE -->
           <mat-button-toggle-group #group="matButtonToggleGroup" formControlName="hasMedias" >
             <mat-button-toggle value="true"> Sim </mat-button-toggle>
             <mat-button-toggle value="false"> Não </mat-button-toggle>
           </mat-button-toggle-group>
         </div>
 
+        <!-- OPÇÕES -->
         <div class="col-md px-1" *ngFor="let socialMedia of socialMedias">
           <label class="btn w-100" *ngIf="group.value == 'true'">
-            <input type="checkbox" name="socialMedia"  id="{{socialMedia.name}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
+            <input type="checkbox" name="socialMedia"  id="{{socialMedia.id}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
           </label>
         </div>
 
       </div>
+
+      <div *ngIf="submitted && dataForm.get('hasMedias').errors">
+        <div class="error-message" *ngIf="submitted && dataForm.get('hasMedias').errors.required"> Selecione uma opção. </div>
+      </div>
+      <div class="error-message mt-1" *ngIf="submitted && 
+                                  group.value == 'true' && 
+                                  dataForm.get('socialMediaArray').value.length == 0"> 
+                                  Selecione ao menos uma rede social. 
+      </div>
     </div>
 
+    <!-- ENVIAR -->
     <div class="d-flex justify-content-center pt-5">
-      <!-- <button id="send" type="submit" [disabled]="submitted" class="btn px-5 py-2">Enviar</button> -->
-      <button id="send" type="submit" class="btn px-5 py-2">Enviar</button>
+      <button id="send" type="submit" [disabled]="posted" class="btn px-5 py-2">Enviar</button>
     </div>
   </form>
-
-  
 
   <img id='image' class="mt-5" src="assets/bottom-image.png" alt="Talk">
   
