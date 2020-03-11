@@ -13,3 +13,5 @@ O protótipo final e as propostas podem ser encontradas [aqui](https://www.figma
 Foi escolhido o Angular pelo fato de possuir os Reactive Forms, que são robutos, reusáveis e testáveis, diferentes de outras tecnologias similares como React e VUE. E como os inputs são a parte principal da aplicação, esta foi considerada a tecnologia que mais se adapta ao problema.
 
 O design é resposível para qualquer tamanho de tela.
+
+O projeto foi feito com base [neste outro projeto](https://github.com/bernardohrl/Telzir), onde também fiz um formulário. Por este motivo há poucos commits.

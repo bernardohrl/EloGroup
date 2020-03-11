@@ -34,14 +34,28 @@
 
       <label for="socialMedia">Possui alguma rede social?</label>
       <div class="btn-group-toggle" data-toggle="buttons">
-        <div class="row">
-          <label class="btn col-sm" *ngFor="let socialMedia of socialMedias">
-            <input type="radio" name="socialMedia" formControlName="socialMedia" id="{{socialMedia.name}}" value="{{socialMedia.id}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
-          </label>
+        <div class="row mx-0">
+          <div class="col-md pb-3">
+            <mat-button-toggle-group #group="matButtonToggleGroup">
+              <mat-button-toggle value="true"> Sim </mat-button-toggle>
+              <mat-button-toggle value="false"> Não </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          
+          <div class="col-md px-1" *ngFor="let socialMedia of socialMedias">
+            <label class="btn w-100" *ngIf="group.value == 'true'" >
+              <input type="checkbox" name="socialMedia" formControlName="socialMedia" id="{{socialMedia.name}}" value="{{socialMedia.id}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
+            </label>
+          </div>
         </div>
       </div>
     </form>
+
     
+    <div class="d-flex justify-content-center pt-5">
+      <button id="send" type="button" class="btn px-5 py-2">Enviar</button>
+    </div>
+
     <img id='image' class="mt-5" src="assets/bottom-image.png" alt="Talk">
     
 </div>
