@@ -3,7 +3,7 @@
 
 
     <!-- INPUTS -->
-    <form class="text-left" [formGroup]="dataForm">
+    <form class="text-left" [formGroup]="dataForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-sm-6">
           <div class="row">
@@ -36,25 +36,27 @@
       <div class="btn-group-toggle" data-toggle="buttons">
         <div class="row mx-0">
           <div class="col-md pb-3">
-            <mat-button-toggle-group #group="matButtonToggleGroup">
+            <mat-button-toggle-group #group="matButtonToggleGroup" formControlName="hasMedias" >
               <mat-button-toggle value="true"> Sim </mat-button-toggle>
               <mat-button-toggle value="false"> Não </mat-button-toggle>
             </mat-button-toggle-group>
           </div>
-          
+
           <div class="col-md px-1" *ngFor="let socialMedia of socialMedias">
-            <label class="btn w-100" *ngIf="group.value == 'true'" >
-              <input type="checkbox" name="socialMedia" formControlName="socialMedia" id="{{socialMedia.name}}" value="{{socialMedia.id}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
+            <label class="btn w-100" *ngIf="group.value == 'true'">
+              <input type="checkbox" name="socialMedia"  id="{{socialMedia.name}}" (change)="socialMediaSelected($event)"> {{socialMedia.name}}
             </label>
           </div>
+
         </div>
+      </div>
+
+      <div class="d-flex justify-content-center pt-5">
+        <button id="send" type="submit" [disabled]="submited" class="btn px-5 py-2">Enviar</button>
       </div>
     </form>
 
     
-    <div class="d-flex justify-content-center pt-5">
-      <button id="send" type="button" class="btn px-5 py-2">Enviar</button>
-    </div>
 
     <img id='image' class="mt-5" src="assets/bottom-image.png" alt="Talk">
     
