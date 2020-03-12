@@ -1,5 +1,9 @@
 ## Rodadando a Aplicação
 
+
+#### Nome na plataforma Gupy: Bernardo Henrique Rosa Lima 
+
+
 #### 1. Instale NPM e Angular
 ```
 sudo apt-get install npm
