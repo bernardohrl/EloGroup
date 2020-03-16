@@ -1,7 +1,8 @@
 ## Rodadando a Aplicação
 
 
-#### Nome na plataforma Gupy: Bernardo Henrique Rosa Lima 
+Nome na plataforma Gupy: ***Bernardo Henrique Rosa Lima*** 
+Para entender melhor sobre a organização dos arquivos e o desenvolvimento do projeto, [clique aqui](desenvolvimento.md).
 
 
 #### 1. Instale NPM e Angular
@@ -17,3 +18,5 @@ ng s
 ```
 
 #### 3. Acesse http://localhost:4200/
+
+
